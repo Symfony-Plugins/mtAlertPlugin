@@ -1,0 +1,35 @@
+mt_alert_message_view:
+  class: sfPropelRouteCollection
+  options:
+    model:                mtAlertMessage
+    module:               mt_alert_message_view
+    prefix_path:          mt_alert_message_view
+    column:               id
+    with_wildcard_routes: true
+
+mt_alert_message:
+  class: sfPropelRouteCollection
+  options:
+    model:                mtAlertMessage
+    module:               mt_alert_message
+    prefix_path:          mt_alert_message
+    column:               id
+    with_wildcard_routes: true
+
+mt_alert_message_user:
+  class: sfPropelRouteCollection
+  options:
+    model:                mtAlertMessageUser
+    module:               mt_alert_message_user
+    prefix_path:          mt_alert_message_user
+    column:               id
+    with_wildcard_routes: true
+
+mt_alert_message_credential:
+  class: sfPropelRouteCollection
+  options:
+    model:                mtAlertMessageCredential
+    module:               mt_alert_message_credential
+    prefix_path:          mt_alert_message_credential
+    column:               id
+    with_wildcard_routes: true

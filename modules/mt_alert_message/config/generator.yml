@@ -1,0 +1,65 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           mtAlertMessage
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          mt_alert_message
+    with_propel_route:     1
+
+    config:
+      actions: ~
+      fields:
+        condition_description:
+          label:          Will be shown when
+        show_to_all:
+          label:          Show to everyone
+      list:
+        title:    Alert list
+        display:  [title, is_active]
+        layout:   stacked
+        params: |
+          <div class="mt_alert_message_list_stacked">
+            <h2>%%_is_active%% %%title%%</h2>
+            <div>%%_state%%</div>
+            <div class="shown_when">%%_shown_when%%</div>
+            <div class="user_information">%%_show_to%%</div>
+            <div class="day_list">%%_days%%</div>
+          </div>
+        actions:
+          _new:
+        object_actions:
+          _edit:
+            label:  Edit alert
+          activate:
+            label:  Activate
+            action: activate
+          deactivate:
+            label:  Deactivate
+            action: deactivate
+          manageUsers:
+            label:  Manage users
+            action: manageUsers
+          manageCredentials:
+            label:  Manage credentials
+            action: manageCredentials
+          _delete:
+            label:  Delete permanently
+      filter:  ~
+      form:
+        actions: {}
+      edit:
+        title:  Edit alert "%%title%%"
+        actions:
+          _list:
+            label:  "Go to alert list"
+          _save:
+      new:
+        title:  Create a new alert
+        actions:
+          _list:
+          _save:
+            label: Save alert

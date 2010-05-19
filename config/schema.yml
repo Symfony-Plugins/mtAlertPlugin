@@ -1,0 +1,129 @@
+connection:         propel
+package:            plugins.mtAlertPlugin.lib.model
+
+classes:
+  mtAlertMessage:
+    tableName:          mt_alert_message
+    description:        The information of the alert
+    columns:
+      id:
+      is_active:
+        type:             boolean
+        default:          true
+        description:      If true the alert is active and can be shown in a web browser or be mailed.
+      title:
+        type:             varchar(255)
+        required:         true
+        description:      The title of the alert when use in a web browser or the subject when the alert is mailed.
+      message:
+        type:             longvarchar
+        required:         true
+        description:      The full description of the alert.
+      can_be_hidden_permanently:
+        type:             boolean
+        default:          false
+        description:      If true, a certain user can hide it permanently.
+      condition_description:
+        type:             varchar(255)
+        required:         false
+        description:      A short text that describes when the alert is shown.
+      condition_class:
+        type:             varchar(255)
+        required:         false
+        description:      The static class to use for the condition.
+      condition_method:
+        type:             varchar(255)
+        required:         false
+        description:      The static method to use for the condition. If this method returns true the alert will be shown/mailed.
+      show_to_all:
+        type:             boolean
+        default:          false
+        description:      If true, the alert will be shown and/or mailed to everyone.
+      can_be_mailed:
+        type:             boolean
+        default:          true
+        description:      If true, the alert can be mailed.
+      show_in_browser:
+        type:             boolean
+        default:          true
+        description:      If true, the alert will be shown in a web browser.
+      partial:
+        type:             varchar(255)
+        required:         false
+        description:      The  full path to a partial as in module/action. Will be appended to the alert after the message of the alert
+
+  mtAlertMessageUserConfiguration:
+    tableName:          mt_alert_message_user_configuration
+    description:        Alert-User specific configuration
+    columns:
+      id:
+      mt_alert_message_id:
+        type:             integer
+        foreignTable:     mt_alert_message
+        foreignReference: id
+        required:         true
+        description:      The associated alert
+      username:
+        type:             varchar(255)
+        required:         true
+        description:      The username
+      hide_permanently:
+        type:             boolean
+        default:          false
+        description:      If the alert should be hidden permanently for this user.
+      _uniques:
+        unique_username_alert: [mt_alert_message_id, username]
+
+  mtAlertMessageUser:
+    tableName:          mt_alert_message_user
+    description:        This table describes to which users the alert will be shown. This information will be ignored if the 'mtAlertMessage::show_to_all' field is true
+    columns:
+      id:
+      mt_alert_message_id:
+        type:             integer
+        required:         true
+        foreignTable:     mt_alert_message
+        foreignReference: id
+        description:      The associated alert
+      username:
+        type:             varchar(255)
+        required:         true
+        description:      The username.
+      _uniques:
+        unique_username_alert: [mt_alert_message_id, username]
+
+  mtAlertMessageCredential:
+    tableName:          mt_alert_message_credential
+    description:        This table describes to which credentials the alert will be shown. This information will be ignored if the 'mtAlertMessage::show_to_all' field is true.
+    columns:
+      id:
+      mt_alert_message_id:
+        type:             integer
+        required:         true
+        foreignTable:     mt_alert_message
+        foreignReference: id
+        description:      The associated alert
+      credential:
+        type:             varchar(255)
+        required:         true
+        description:      The credential
+      _uniques:
+        unique_credential_alert: [mt_alert_message_id, credential]
+
+  mtAlertMessageDay:
+    tableName:          mt_alert_message_day
+    description:        The alert will be shown only in the days that are described here.
+    columns:
+      id:
+      mt_alert_message_id:
+        type:             integer
+        required:         true
+        foreignTable:     mt_alert_message
+        foreignReference: id
+        description:      The associated alert.
+      mt_alert_day_id:
+        type:             integer
+        required:         true
+        description:      The day as php 'date("w")' function returns it
+      _uniques:
+        unique_day_alert: [mt_alert_message_id, mt_alert_day_id]

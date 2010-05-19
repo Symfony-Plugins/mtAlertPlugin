@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file original="global" source-language="en" datatype="plaintext" date="2010-05-18T12:40:33Z">
+    <header/>
+    <body>
+      <trans-unit>
+        <source>Title</source>
+        <target>Título</target>
+      </trans-unit>
+      <trans-unit>
+        <source>State</source>
+        <target>Estado</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Is active</source>
+        <target>¿Se encuentra activada?</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Active</source>
+        <target>Activada</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Shown when</source>
+        <target>Mostrada cuando</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Users</source>
+        <target>Usuarios</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Shown on</source>
+        <target>Mostrada los días</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Edit alert</source>
+        <target>Editar alerta</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Activate</source>
+        <target>Activar</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Deactivate</source>
+        <target>Desactivar</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Delete permanently</source>
+        <target>Eliminar permanentemente</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Manage users</source>
+        <target>Manejar usuarios</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Manage credentials</source>
+        <target>Manejar credenciales</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Can be hidden permanently</source>
+        <target>¿Puede ser escondida permanentemente?</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Hide permanently</source>
+        <target>Esconder permanentemente</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Alert list</source>
+        <target>Listado de alertas</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Sunday</source>
+        <target>Domingo</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Monday</source>
+        <target>Lunes</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Tuesday</source>
+        <target>Martes</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Wednesday</source>
+        <target>Miércoles</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Thursday</source>
+        <target>Jueves</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Friday</source>
+        <target>Viernes</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Saturday</source>
+        <target>Sábado</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Partial</source>
+        <target>Partial</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Save alert</source>
+        <target>Guardar alerta</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Show to everyone</source>
+        <target>Mostrar a todos</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Will be shown on</source>
+        <target>Será mostrada los días</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Edit alert "%%title%%"</source>
+        <target>Editar alerta "%%title%%"</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Credentials of "%%mt_alert_message%%"</source>
+        <target>Credenciales de la alerta "%%mt_alert_message%%"</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Users of "%%mt_alert_message%%"</source>
+        <target>Usuarios de la alerta "%%mt_alert_message%%"</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Go back to alert list</source>
+        <target>Volver al listado de alertas</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Editing associated credential "%%credential%%" of "%%mt_alert_message%%"</source>
+        <target>Editando credencial asociada "%%credential%%" a la alerta "%%mt_alert_message%%"</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Associate new credential to "%%mt_alert_message%%"</source>
+        <target>Asociar nueva credencial a "%%mt_alert_message%%"</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Go back to list</source>
+        <target>Volver al listado</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Please select a credential</source>
+        <target>Por favor, seleccione una credencial</target>
+      </trans-unit>
+      <trans-unit>
+        <source>is empty</source>
+        <target>campo vacío</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Credential</source>
+        <target>Credencial</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Username</source>
+        <target>Nombre de usuario</target>
+      </trans-unit>
+      <trans-unit>
+        <source>You do not have alerts right now.</source>
+        <target>No tienes alertas en este momento.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>There is an alert for you.</source>
+        <target>Tienes una alerta.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>There are %%count%% alerts for you.</source>
+        <target>Tienes %%count%% alertas.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Show</source>
+        <target>Mostrar</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Hide</source>
+        <target>Ocultar</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Hide for this session</source>
+        <target>Esconder por el resto de la sesión</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The alert '%%title%%' will be shown again in this session.</source>
+        <target>La alerta '%%title%%' será mostrada nuevamente.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The alert '%%title%%' won't be shown again in this session.</source>
+        <target>La alerta '%%title%%' no será mostrada nuevamente en esta sesión.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The alert '%%title%%' will not be shown again in this session.</source>
+        <target>La alerta '%%title%%' no será mostrara nuevamente en esta sesión.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The alert '%%title%%' will not be showed again.</source>
+        <target>La alerta '%%title%%' no será mostrada nuevamente.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The alert was activated.</source>
+        <target>La alerta fue activada.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The alert was deactivated.</source>
+        <target>La alerta fue desactivada.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>You cannot deactivate the selected alert.</source>
+        <target>No puedes desactivar la alerta seleccionada.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>You cannot activate the selected alert.</source>
+        <target>No puedes activar la alerta seleccionada.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The alert '%%title%%' will be shown again.</source>
+        <target>La alerta '%%title%%' será mostrada nuevamente.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Could not process the request</source>
+        <target>No se pudo procesar el requerimiento</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The alert '%%title%%' won't be shown again.</source>
+        <target>La alerta '%%title%%' no será mostrada nuevamente.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Could not process the request. The alert with ID '%%id%%' does not exists.</source>
+        <target>No se pudo procesar el requerimiento. La alerta con el ID '%%id%%' no existe.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The alert '%%title%%' will not be showed again.</source>
+        <target>La alerta '%%title%%' no será mostrada nuevamente.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Hidden for this session</source>
+        <target>Ocultada durante esta sesión</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Hidden permanently</source>
+        <target>Ocultada permanentemente</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Active</source>
+        <target>Activa</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Enable</source>
+        <target>Activar</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Disable permanently</source>
+        <target>Deshabilitar permanentemente</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Disable for this session</source>
+        <target>Deshabilitar por esta sesión</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Create a new alert</source>
+        <target>Crear nueva alerta</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Will be shown when</source>
+        <target>Mostrada cuando</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Condition class</source>
+        <target>Clase de la condición</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Condition method</source>
+        <target>Método de la condición</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Can be mailed</source>
+        <target>¿Puede ser enviada por mail?</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Show in browser</source>
+        <target>¿Debe ser mostrada en el navegador?</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Go to alert list</source>
+        <target>Ir al listado de alertas</target>
+      </trans-unit>
+      <trans-unit>
+        <source>This alert will be shown to everybody.</source>
+        <target>Esta alerta será mostrada a todos.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The title of the alert will be used as subject of the corresponding mail.</source>
+        <target>El título de la alerta será usado como 'asunto' del mail correspondiente.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Full description of the alert's purpose.</source>
+        <target>Descripción completa del propósito de la alerta.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>If this is checked, the user will be able to hide this alert permanently.</source>
+        <target>Si se tilda, el usuario va a poder esconder la alerta permanentemente.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>A short text that describes when the alert is shown.</source>
+        <target>Un texto corto que describe cuando la alerta será mostrada.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Class that will be user to check the condition. If empty the alert will always be shown.</source>
+        <target>La clase que será usada para chequear la condición. Si no es ingresada, la alerta será mostrada siempre.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Method of previously entered class. If this method returns true, the alert will be shown. If empty the alert will always be shown.</source>
+        <target>Método de la clase ingresada arriba. Si este método retorna verdadero la alerta será mostrada. Si no es ingresado, la alerta siempre será mostrada.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>If checked the alert will be shown to everyone.</source>
+        <target>Si se tilda la alerta será mostrada a todos.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>If the alert can be mailed when runing the "sendMail" task.</source>
+        <target>Especifica si la alerta puede ser enviada por correo electrónico cuando se ejecuta la tarea 'sendMail'.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>If checked the alert will be shown in web browsers.</source>
+        <target>Si se tilda la alerta será mostrada en el navegador.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The full path to a partial as in "module/action". Will be appended to the message of the alert.</source>
+        <target>La ruta completa a un partial de la forma "module/action". El contenido del partial será agregado al mensaje de la alerta.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>The alert will be shown in the checked days.</source>
+        <target>La alerta será mostrada en los días tildados.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Message</source>
+        <target>Mensaje</target>
+      </trans-unit>
+      <trans-unit>
+        <source>yes</source>
+        <target>sí</target>
+      </trans-unit>
+      <trans-unit>
+        <source>no</source>
+        <target>no</target>
+      </trans-unit>
+      <trans-unit>
+        <source>yes or no</source>
+        <target>indistinto</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Always</source>
+        <target>Siempre</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Not specified</source>
+        <target>No especificado</target>
+      </trans-unit>
+      <trans-unit>
+        <source></source>
+        <target></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

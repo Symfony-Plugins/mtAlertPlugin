@@ -1,0 +1,8 @@
+#all:
+#  mtAlertPlugin:
+#    credentials: []
+#    mail_subject: "App name | %%title%%"
+#    mail_from:    "myMail@myServer.com"
+#    mail_retrieve_mails_method: ['Class', 'StaticMethod']                   #This method should retrieve the email address of an array of usernames passed as parameter.
+#    mail_retrieve_usernames_by_credential_method: ['Class', 'StaticMethod'] #This methos should retrieve the users that have a certain credential
+#    mail_retrieve_all_mails_method: ['Class', 'StaticMethod']               #This should retrieve all the mails of all the users of the application

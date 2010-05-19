@@ -1,0 +1,42 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           mtAlertMessageCredential
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          mt_alert_message_credential
+    with_propel_route:     1
+
+    config:
+      actions: ~
+      fields:  ~
+      list:
+        display:            [credential]
+        actions:
+          goBack:
+            label:          Go back to alert list
+            action:         goToAlertList
+          _new:
+        batch_actions:      {}
+        object_actions:
+          _delete:
+      filter:
+        class:              false
+      form:
+        actions:            {}
+      edit:
+        title:              "Editing associated credential \"%%credential%%\" of \"%%mt_alert_message%%\""
+        actions:
+          _list:
+            label:          "Go back to list"
+          _save:
+      new:
+        title:              "Associate new credential to \"%%mt_alert_message%%\""
+        actions:
+          _list:
+            label:          "Go back to list"
+          _save:
+          _save_and_add:

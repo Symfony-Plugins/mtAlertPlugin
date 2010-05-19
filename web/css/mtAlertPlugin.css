@@ -1,0 +1,162 @@
+.mt_alert_message_list_stacked .list_detail
+{
+  margin-left: 10px;
+}
+
+.mt_alert_message_list_stacked .day_list ul li
+{
+  list-style-type: none;
+  display: inline;
+}
+
+.mt_alert_message_list_stacked h2
+{
+
+}
+
+ul.sf_admin_td_actions li
+{
+  display: block !important;
+}
+
+#mt_alert_messages
+{
+
+}
+
+#mt_alert_messages #closer
+{
+  font-size: 12px;
+  margin-right: 15px;
+  float: right;
+  margin-top: 5px;
+  background-color: transparent;
+  margin-right: 15px;
+}
+
+#mt_alert_messages_detail
+{
+  position: absolute;
+  width: 100%;
+  background-color: #F9FCFD;
+  top: 0;
+  padding: 7px 7px;
+  border-bottom: 3px solid #DDD;
+  border-top: 1px solid #DDD;
+}
+
+#mt_alert_messages_detail .mt_alert_message
+{
+}
+
+#mt_alert_messages_detail .mt_alert_message h3
+{
+
+}
+
+#mt_alert_messages_detail .mt_alert_message div.content
+{
+  margin-left: 25px;
+}
+
+
+#mt_alert_messages_detail .mt_alert_message div.actions ul
+{
+  margin-left: 0px;
+}
+
+#mt_alert_messages_detail .mt_alert_message div.actions li
+{
+  list-style-type: none;
+  margin-right: 3px;
+  display: inline;
+}
+
+#mt_alert_messages_detail .mt_alert_message div.actions
+{
+}
+
+#mt_alert_messages_detail .mt_alert_message div.message
+{
+}
+
+#mt_alert_messages_notification
+{
+  position: absolute;
+  width: 100%;
+  background-color: #F9FCFD;
+  top: 0;
+  /*
+  filter: alpha(opacity=40);
+  opacity: 0.4;
+  */
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+  text-align: center;
+  padding: 7px 7px;
+  border-bottom: 3px solid #DDD;
+  border-top: 1px solid #DDD;
+}
+
+#mt_alert_messages_detail_expander
+{
+
+}
+
+#mt_alert_messages_ajax_area
+{
+  text-align: center;
+  font-size: 14px;
+}
+
+#mt_alert_messages_ajax_area .error
+{
+  padding: 3px 0px;
+  background-color: #FF3333;
+  color: #FFF;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+#mt_alert_messages_ajax_area .notice
+{
+  padding: 3px 0px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  background-color: #FFFFCC;
+}
+
+#sf_admin_container ul li.sf_admin_action_activate a
+{
+    background: transparent url(../../mtAlertPlugin/images/16x16/power_green.png) no-repeat scroll 0 0;
+}
+
+#sf_admin_container ul li.sf_admin_action_deactivate a
+{
+    background: transparent url(../../mtAlertPlugin/images/16x16/power_black.png) no-repeat scroll 0 0;
+}
+
+#sf_admin_container ul li.sf_admin_action_managecredentials a
+{
+    background: transparent url(../../mtAlertPlugin/images/16x16/security.png) no-repeat scroll 0 0;
+}
+
+#sf_admin_container ul li.sf_admin_action_manageusers a
+{
+    background: transparent url(../../mtAlertPlugin/images/16x16/people.png) no-repeat scroll 0 0;
+}
+
+#sf_admin_container ul li.sf_admin_action_nevershowagain a
+{
+    background: transparent url(../../mtAlertPlugin/images/16x16/power_red.png) no-repeat scroll 0 0;
+}
+
+#sf_admin_container ul li.sf_admin_action_showagain a
+{
+    background: transparent url(../../mtAlertPlugin/images/16x16/power_green.png) no-repeat scroll 0 0;
+}
+
+#sf_admin_container ul li.sf_admin_action_hideinsession a
+{
+    background: transparent url(../../mtAlertPlugin/images/16x16/power_yellow.png) no-repeat scroll 0 0;
+}

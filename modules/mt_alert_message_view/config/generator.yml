@@ -1,0 +1,45 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           mtAlertMessage
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          mt_alert_message_view
+    with_propel_route:     1
+
+    config:
+      actions: ~
+      fields:
+        condition_description:
+          label:          Will be shown when
+      list:
+        title:    Alert list
+        display:  [title, is_active]
+        layout:   stacked
+        params: |
+          <div class="mt_alert_message_list_stacked">
+            <h2>%%title%%</h2>
+            <div>%%_state%%</div>
+            <div>%%_shown_when%%</div>
+            <div class="day_list">%%_days%%</div>
+          </div>
+        actions: {}
+        batch_actions: {}
+        object_actions:
+          hidePermanently:
+            label:          Hide permanently
+            action:         doHidePermanently
+          showAgain:
+            label:          Show again
+            action:         doShow
+          hideInSession:
+            label:          Hide for this session
+            action:         doHideInSession
+      filter:
+        class: false
+      form:    ~
+      edit:    ~
+      new:     ~

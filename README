@@ -1,0 +1,61 @@
+Instalation
+
+  * First of all you must create some methods in the myUser class:
+
+    - you should provide a 'getUsername' method in you myUser class. The username returned by this method should be unique.
+
+  * If you like, you could add you application's credentials in the app.yml
+
+    app.yml
+      all:
+        mt_alert_plugin:
+          credentials: [patrimonio_admin, patrimonio_center_admin, patrimonio_unit_admin, patrimonio_unit]
+
+  * The plugin admin modules should be enabled in the settings.yml file to be able to add and configure alerts
+
+    setting.yml:
+      all:
+        enabled_modules:        [..., mt_alert_message, mt_alert_message_user, mt_alert_message_credential]
+
+  * There's also a non administrative module that should be seen by everyone. This module show the alerts for the logged user and allows some configuration on them:
+
+    setting.yml:
+      all:
+        enabled_modules:        [..., mt_alert_message_view]
+
+
+  * Also you should provide some 'extra methods' if you'd like to send mails. This methods are configured in the 'app.yml' section of the plugin. Three static methods are needed:
+
+    app.yml
+      all:
+        mt_alert_plugin:
+          mail_retrieve_mails_method:                     This method should retrieve the mail address of an array of usernames passed as parameter.
+          mail_retrieve_usernames_by_credential_method:   This methos should retrieve the usernames of the user who have a credential passed as parameter.
+          mail_retrieve_all_mails_method:                 This should retrieve the mail addresses of all the users of the application.
+
+    This plugin uses the dcMailerPlugin to send mails, so its installation is needed.
+
+  * Full example of the app.yml:
+
+      mt_alert_plugin:
+        credentials:                                  [admin, center_admin, unit_admin, unit]
+        mail_subject:                                 "App Name | %%title%%"
+        mail_from:                                    "address@server.com"
+        mail_retrieve_mails_method:                   ['UserHelper', 'getMailsByUsernames']
+        mail_retrieve_usernames_by_credential_method: ['UserHelper', 'getUsernamesByCredential']
+        mail_retrieve_all_mails_method:               ['UserHelper', 'getAllMails']
+
+
+Usage:
+  1. Administration:
+
+     Start by the 'mt_alert_message' module to create some alerts.
+
+  2. That's it!
+
+
+  3. To send mails use the mtAlertPlugin:sendMail task. An application and an enviroment is required:
+
+    php symfony mtAlertPlugin:sendMail --application="frontend" --env="dev"
+
+    This task fetches all the alerts that are active and its condition evaluates to true and sends them to the corresponding users.
