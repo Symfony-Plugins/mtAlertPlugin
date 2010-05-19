@@ -9,7 +9,7 @@ class mtAlertConfiguration
 
   static public function getEnableRichText()
   {
-    return sfConfig::get('app_mt_alert_plugin_enable_rich_text', true);
+    return sfConfig::get('app_mt_alert_plugin_enable_rich_text', false);
   }
 
   static public function getTinyMCETheme()

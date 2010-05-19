@@ -9,7 +9,7 @@ Instalation
     app.yml
       all:
         mt_alert_plugin:
-          credentials: [patrimonio_admin, patrimonio_center_admin, patrimonio_unit_admin, patrimonio_unit]
+          credentials: [admin, center_admin, unit_admin, unit]
 
   * The plugin admin modules should be enabled in the settings.yml file to be able to add and configure alerts
 
@@ -39,12 +39,15 @@ Instalation
 
       mt_alert_plugin:
         credentials:                                  [admin, center_admin, unit_admin, unit]
+        app_mt_alert_plugin_enable_rich_text:         false
+        app_mt_alert_plugin_tiny_mce_theme:           simple
         mail_subject:                                 "App Name | %%title%%"
         mail_from:                                    "address@server.com"
         mail_retrieve_mails_method:                   ['UserHelper', 'getMailsByUsernames']
         mail_retrieve_usernames_by_credential_method: ['UserHelper', 'getUsernamesByCredential']
         mail_retrieve_all_mails_method:               ['UserHelper', 'getAllMails']
 
+  * If you want you can use a rich text editor when creating the alerts. You need to install sfFormExtraPlugin, download the tiny_mce library and set it all up. After that you must enable the rich text feature in the mt_alert_plugin app.yml section
 
 Usage:
   1. Administration:
