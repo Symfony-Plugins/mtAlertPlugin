@@ -1,4 +1,12 @@
-Instalation
+REQUIREMENTS
+============
+  * Add a getUsername method to myUser class (MANDATORY)
+  * If mail service is required: dcMailerPlugin (OPTIONAL)
+  * If rich text editing is desired: sfFormExtraPlugin & tinyMCE library. (OPTIONAL)
+
+
+INSTALATION
+===========
 
   * First of all you must create some methods in the myUser class:
 
@@ -24,16 +32,23 @@ Instalation
         enabled_modules:        [..., mt_alert_message_view]
 
 
-  * Also you should provide some 'extra methods' if you'd like to send mails. This methods are configured in the 'app.yml' section of the plugin. Three static methods are needed:
+  *** IF MAIL SERVICE IS DESIRED ***
+  ==================================
 
-    app.yml
-      all:
-        mt_alert_plugin:
-          mail_retrieve_mails_method:                     This method should retrieve the mail address of an array of usernames passed as parameter.
-          mail_retrieve_usernames_by_credential_method:   This methos should retrieve the usernames of the user who have a credential passed as parameter.
-          mail_retrieve_all_mails_method:                 This should retrieve the mail addresses of all the users of the application.
+    * Also you should provide some 'extra methods' if you'd like to send mails. This methods are configured in the 'app.yml' section of the plugin. Three static methods are needed:
 
-    This plugin uses the dcMailerPlugin to send mails, so its installation is needed.
+      app.yml
+        all:
+          mt_alert_plugin:
+            mail_retrieve_mails_method:                     This method should retrieve the mail address of an array of usernames passed as parameter.
+            mail_retrieve_usernames_by_credential_method:   This methos should retrieve the usernames of the user who have a credential passed as parameter.
+            mail_retrieve_all_mails_method:                 This should retrieve the mail addresses of all the users of the application.
+
+      This plugin uses the dcMailerPlugin to send mails, so its installation is needed.
+
+
+*** APP.YML Example ***
+=======================
 
   * Full example of the app.yml:
 
