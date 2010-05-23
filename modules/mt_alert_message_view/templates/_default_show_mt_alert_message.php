@@ -11,11 +11,11 @@
   </h3>
   <div class="content" style="display: none" id="<?php echo $mtaDetailId ?>">
     <div class="actions">
-      <?php include_partial('mt_alert_message_view/show_mt_alert_message_actions', array('mta' => $mta, 'mtaId' => $mtaId, 'mtaDetailId' => $mtaDetailId)) ?>
+      <?php include_partial('mt_alert_message_view/'.mtAlertConfiguration::getTheme().'_show_mt_alert_message_actions', array('mta' => $mta, 'mtaId' => $mtaId, 'mtaDetailId' => $mtaDetailId)) ?>
     </div>
     <div class="message"><?php echo mtAlertConfiguration::getEnableRichText()? sfOutputEscaper::unescape($mta->getMessage()) : $mta->getMessage() ?></div>
     <?php if (strlen($mta->getPartial()) > 0): ?>
-    <div class="partial"><?php include_partial($mta->getPartial(), array('mta' => $mta)) ?></div>
+      <div class="partial"><?php include_partial($mta->getPartial(), array('mta' => $mta)) ?></div>
     <?php endif ?>
   </div>
 </div>

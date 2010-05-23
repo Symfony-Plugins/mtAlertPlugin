@@ -124,7 +124,7 @@ class mtAlertMessage extends BasemtAlertMessage
   {
     $conf = new mtAlertMessageUserConfiguration();
     $conf->setmtAlertMessageId($this->getId());
-    $conf->setUsername($sf_user->getUsername());
+    $conf->setUsername(mtAlertUserHelper::getUsername($sf_user));
 
     return $conf;
   }
@@ -139,7 +139,7 @@ class mtAlertMessage extends BasemtAlertMessage
   protected function retrieveConfiguration($sf_user)
   {
     $criteria = new Criteria();
-    $criteria->add(mtAlertMessageUserConfigurationPeer::USERNAME, $sf_user->getUsername());
+    $criteria->add(mtAlertMessageUserConfigurationPeer::USERNAME, mtAlertUserHelper::getUsername($sf_user));
     $criteria->add(mtAlertMessageUserConfigurationPeer::MT_ALERT_MESSAGE_ID, $this->getId());
 
     return mtAlertMessageUserConfigurationPeer::doSelectOne($criteria);
@@ -218,7 +218,7 @@ class mtAlertMessage extends BasemtAlertMessage
    */
   public function getState($user)
   {
-    $v = mtAlertConfiguration::getHideAlertInSessionAttribute($user);
+    $v = mtAlertUserHelper::getHideAlertInSessionAttribute($user);
     $v = $v instanceOf sfOutputEscaper? $v->getRawValue() : $v;
 
     if ($this->getConfiguration($user)->getHidePermanently())

@@ -5,7 +5,8 @@ class pluginsMt_alert_message_viewComponents extends sfComponents
   public function executeShow()
   {
     $criteria = new Criteria();
-    $ids      = mtAlertConfiguration::getHideAlertInSessionAttribute($this->getUser());
+
+    $ids      = mtAlertUserHelper::getHideAlertInSessionAttribute($this->getUser());
 
     if (!empty($ids))
     {

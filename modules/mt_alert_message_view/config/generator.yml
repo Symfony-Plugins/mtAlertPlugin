@@ -17,7 +17,7 @@ generator:
           label:          Will be shown when
       list:
         title:    Alert list
-        display:  [title, is_active]
+        display:  [title]
         layout:   stacked
         params: |
           <div class="mt_alert_message_list_stacked">

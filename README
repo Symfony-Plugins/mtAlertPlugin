@@ -1,9 +1,12 @@
+========================================
+BEWARE! The plugin is in a 'beta' state!
+========================================
+
 REQUIREMENTS
 ============
   * Add a getUsername method to myUser class (MANDATORY)
   * If mail service is required: dcMailerPlugin (OPTIONAL)
   * If rich text editing is desired: sfFormExtraPlugin & tinyMCE library. (OPTIONAL)
-
 
 INSTALATION
 ===========
@@ -31,6 +34,9 @@ INSTALATION
       all:
         enabled_modules:        [..., mt_alert_message_view]
 
+  * Add this lines somewhere in the layout:
+
+    <?php include_component('mt_alert_message_view', 'show') ?>
 
   *** IF MAIL SERVICE IS DESIRED ***
   ==================================
@@ -56,6 +62,7 @@ INSTALATION
         credentials:                                  [admin, center_admin, unit_admin, unit]
         app_mt_alert_plugin_enable_rich_text:         false
         app_mt_alert_plugin_tiny_mce_theme:           simple
+        theme:                                        default
         mail_subject:                                 "App Name | %%title%%"
         mail_from:                                    "address@server.com"
         mail_retrieve_mails_method:                   ['UserHelper', 'getMailsByUsernames']
@@ -77,3 +84,34 @@ Usage:
     php symfony mtAlertPlugin:sendMail --application="frontend" --env="dev"
 
     This task fetches all the alerts that are active and its condition evaluates to true and sends them to the corresponding users.
+
+
+THEMES
+======
+  In the app.yml section of the plugin you can configure the 'themes' of the plugin. Currently the plugin only ships with one theme which is named 'default'. You can add others by:
+
+    1. mkdir -p apps/APP_NAME/modules/mt_alert_message_view/templates
+    2. Provide some HTML files:
+
+      $THEMENAMEHideInThisSessionError.php
+      $THEMENAMEHideInThisSessionSuccess.php
+      $THEMENAMEHidePermanentlyError.php
+      $THEMENAMEHidePermanentlySuccess.php
+      _$THEMENAME_show_mt_alert_message_actions.php
+      _$THEMENAME_show_mt_alert_message.php
+      _$THEMENAME_show.php
+
+    3. Change the app.yml:
+
+      mt_alert_plugin:
+        theme:          $THEMENAME
+
+    In '$THEMENAME_show.php' the stylesheets are included. So if you want to change the CSS file used you must change this:
+
+    <?php use_stylesheet('/mtAlertPlugin/css/mtAlertPlugin.css', 'first') ?>
+
+    to
+
+    <?php use_stylesheet('/mtAlertPlugin/css/$CSSNAME.css', 'first') ?>
+
+

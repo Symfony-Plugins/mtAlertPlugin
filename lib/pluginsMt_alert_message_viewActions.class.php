@@ -22,7 +22,7 @@ class pluginsMt_alert_message_viewActions extends  autoMt_alert_message_viewActi
 
     /* This adds conditions for USER filtering */
     mtAlertMessagePeer::doSelectActiveCriteria($criteria);
-    mtAlertMessagePeer::doSelectCredentialsUsersCriteria($this->getUser()->listCredentials(), array($this->getUser()->getUsername()), $criteria);
+    mtAlertMessagePeer::doSelectCredentialsUsersCriteria($this->getUser()->listCredentials(), array(mtAlertUserHelper::getUsername($this->getUser())), $criteria);
 
     /* This filter alerts that are not beign shown because of the condition is false */
     foreach (mtAlertMessagePeer::doSelect($criteria) as $o)
@@ -43,8 +43,11 @@ class pluginsMt_alert_message_viewActions extends  autoMt_alert_message_viewActi
 
     try
     {
-      $this->setHidePermanently($this->mt_alert_message, false);
-      mtAlertConfiguration::showAlertInSession($this->getUser(), $this->mt_alert_message);
+      if (mtAlertUserHelper::canHideAlertsPermanently($this->getUser()))
+      {
+        $this->setHidePermanently($this->mt_alert_message, false);
+      }
+      mtAlertUserHelper::showAlertInSession($this->getUser(), $this->mt_alert_message);
 
       $this->getUser()->setFlash('notice', __("The alert '%%title%%' will be shown again.", array('%%title%%' => $this->mt_alert_message->getTitle(), 'mt_alert_messages')));
     } catch (Exception $e) {
@@ -60,12 +63,19 @@ class pluginsMt_alert_message_viewActions extends  autoMt_alert_message_viewActi
 
     $this->mt_alert_message = $this->getRoute()->getObject();
 
-    try
+    if (mtAlertUserHelper::canHideAlertsPermanently($this->getUser()))
     {
-      $this->setHidePermanently($this->mt_alert_message, false);
-      $this->getUser()->setFlash('notice', __("The alert '%%title%%' will be shown again.", array('%%title%%' => $this->mt_alert_message->getTitle()), 'mt_alert_messages'));
-    } catch (Exception $e) {
-      $this->getUser()->setFlash('error', __("Could not process the request", array(), 'mt_alert_messages'));
+      try
+      {
+        $this->setHidePermanently($this->mt_alert_message, false);
+        $this->getUser()->setFlash('notice', __("The alert '%%title%%' will be shown again.", array('%%title%%' => $this->mt_alert_message->getTitle()), 'mt_alert_messages'));
+      } catch (Exception $e) {
+        $this->getUser()->setFlash('error', __("Could not process the request", array(), 'mt_alert_messages'));
+      }
+    }
+    else
+    {
+      $this->getUser()->setFlash('error', __("You cannot hide alerts permanently.", array(), 'mt_alert_messages'));
     }
 
     $this->redirect('@mt_alert_message_view');
@@ -75,14 +85,21 @@ class pluginsMt_alert_message_viewActions extends  autoMt_alert_message_viewActi
   {
     $this->getContext()->getConfiguration()->loadHelpers('I18N');
 
-    $this->mt_alert_message = $this->getRoute()->getObject();
-
-    try
+    if (mtAlertUserHelper::canHideAlertsPermanently($this->getUser()))
     {
-      $this->setHidePermanently($this->mt_alert_message, true);
-      $this->getUser()->setFlash('notice', __("The alert '%%title%%' won't be shown again.", array('%%title%%' => $this->mt_alert_message->getTitle()), 'mt_alert_messages'));
-    } catch (Exception $e) {
-      $this->getUser()->setFlash('error', __("Could not process the request", array(), 'mt_alert_messages'));
+      $this->mt_alert_message = $this->getRoute()->getObject();
+
+      try
+      {
+        $this->setHidePermanently($this->mt_alert_message, true);
+        $this->getUser()->setFlash('notice', __("The alert '%%title%%' won't be shown again.", array('%%title%%' => $this->mt_alert_message->getTitle()), 'mt_alert_messages'));
+      } catch (Exception $e) {
+        $this->getUser()->setFlash('error', __("Could not process the request", array(), 'mt_alert_messages'));
+      }
+    }
+    else
+    {
+      $this->getUser()->setFlash('error', __("You cannot hide alerts permanently.", array(), 'mt_alert_messages'));
     }
 
     $this->redirect('@mt_alert_message_view');
@@ -101,24 +118,32 @@ class pluginsMt_alert_message_viewActions extends  autoMt_alert_message_viewActi
     $this->container_id        = $this->getRequest()->getParameter('container_id');
     $this->mt_alert_message    = mtAlertMessagePeer::retrieveByPk($this->mt_alert_message_id);
 
-    if (is_null($this->mt_alert_message))
+    if (mtAlertUserHelper::canHideAlertsPermanently($this->getUser()))
     {
-      $this->text = __("Could not process the request. The alert with ID '%%id%%' does not exists.", array('%%id%%' => $this->mt_alert_message_id), 'mt_alert_messages');
-      $ret = sfView::ERROR;
+      if (is_null($this->mt_alert_message))
+      {
+        $this->text = __("Could not process the request. The alert with ID '%%id%%' does not exists.", array('%%id%%' => $this->mt_alert_message_id), 'mt_alert_messages');
+        $ret = sfView::ERROR;
+      }
+      else
+      {
+        try
+        {
+          $this->setHidePermanently($this->mt_alert_message, true);
+          $this->text = __("The alert '%%title%%' will not be showed again.", array('%%title%%' => $this->mt_alert_message->getTitle()), 'mt_alert_messages');
+          $ret = sfView::SUCCESS;
+        } catch (Exception $e) {
+          $this->text = __("Could not process the request", array(), 'mt_alert_messages');
+          $ret = sfView::ERROR;
+        }
+      }
     }
     else
     {
-      try
-      {
-        $this->setHidePermanently($this->mt_alert_message, true);
-        $this->text = __("The alert '%%title%%' will not be showed again.", array('%%title%%' => $this->mt_alert_message->getTitle()), 'mt_alert_messages');
-        $ret = sfView::SUCCESS;
-      } catch (Exception $e) {
-        $this->text = __("Could not process the request", array(), 'mt_alert_messages');
-        $ret = sfView::ERROR;
-      }
+      $this->getUser()->setFlash('error', __("You cannot hide alerts permanently.", array(), 'mt_alert_messages'));
     }
 
+    $this->setTemplate(mtAlertConfiguration::getTheme().'HideInThisSession');
     return $ret;
   }
 
@@ -141,10 +166,12 @@ class pluginsMt_alert_message_viewActions extends  autoMt_alert_message_viewActi
     }
     else
     {
-      mtAlertConfiguration::hideAlertInSession($this->getUser(), $this->mt_alert_message);
+      mtAlertUserHelper::hideAlertInSession($this->getUser(), $this->mt_alert_message);
       $this->text = __("The alert '%%title%%' will not be shown again in this session.", array('%%title%%' => $this->mt_alert_message->getTitle()), 'mt_alert_messages');
       $ret = sfView::SUCCESS;
     }
+
+    $this->setTemplate(mtAlertConfiguration::getTheme().'HideInThisSession');
 
     return $ret;
   }
@@ -154,7 +181,7 @@ class pluginsMt_alert_message_viewActions extends  autoMt_alert_message_viewActi
     $this->getContext()->getConfiguration()->loadHelpers('I18N');
 
     $this->mt_alert_message = $this->getRoute()->getObject();
-    mtAlertConfiguration::showAlertInSession($this->getUser(), $this->mt_alert_message);
+    mtAlertUserHelper::showAlertInSession($this->getUser(), $this->mt_alert_message);
     $this->getUser()->setFlash('notice', __("The alert '%%title%%' will be shown again in this session.", array('%%title%%' => $this->mt_alert_message->getTitle()), 'mt_alert_messages'));
 
     $this->redirect('@mt_alert_message_view');
@@ -165,11 +192,10 @@ class pluginsMt_alert_message_viewActions extends  autoMt_alert_message_viewActi
     $this->getContext()->getConfiguration()->loadHelpers('I18N');
 
     $this->mt_alert_message = $this->getRoute()->getObject();
-    mtAlertConfiguration::hideAlertInSession($this->getUser(), $this->mt_alert_message);
+    mtAlertUserHelper::hideAlertInSession($this->getUser(), $this->mt_alert_message);
     $this->getUser()->setFlash('notice', __("The alert '%%title%%' won't be shown again in this session.", array('%%title%%' => $this->mt_alert_message->getTitle()), 'mt_alert_messages'));
 
     $this->redirect('@mt_alert_message_view');
-
   }
 
   public function executeBatchDelete(sfWebRequest $request)

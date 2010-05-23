@@ -8,6 +8,12 @@
  */
 class pluginsMt_alert_messageActions extends  autoMt_alert_messageActions 
 {
+  public function preExecute()
+  {
+    parent::preExecute();
+    $this->getContext()->getConfiguration()->loadHelpers(array('I18N'));
+  }
+
   public function executeDeactivate(sfWebRequest $request)
   {
     $this->mt_alert_message = $this->getRoute()->getObject();

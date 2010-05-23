@@ -357,6 +357,10 @@
         <target>No especificado</target>
       </trans-unit>
       <trans-unit>
+        <source>Alert</source>
+        <target>Alerta</target>
+      </trans-unit>
+      <trans-unit>
         <source></source>
         <target></target>
       </trans-unit>

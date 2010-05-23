@@ -63,6 +63,7 @@ classes:
         foreignReference: id
         required:         true
         description:      The associated alert
+        onDelete:         cascade
       username:
         type:             varchar(255)
         required:         true
@@ -85,6 +86,7 @@ classes:
         foreignTable:     mt_alert_message
         foreignReference: id
         description:      The associated alert
+        onDelete:         cascade
       username:
         type:             varchar(255)
         required:         true
@@ -103,6 +105,7 @@ classes:
         foreignTable:     mt_alert_message
         foreignReference: id
         description:      The associated alert
+        onDelete:         cascade
       credential:
         type:             varchar(255)
         required:         true
@@ -121,6 +124,7 @@ classes:
         foreignTable:     mt_alert_message
         foreignReference: id
         description:      The associated alert.
+        onDelete:         cascade
       mt_alert_day_id:
         type:             integer
         required:         true

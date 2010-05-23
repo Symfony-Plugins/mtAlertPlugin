@@ -2,6 +2,11 @@
 
 class mtAlertConfiguration
 {
+  static public function getTheme()
+  {
+    return sfConfig::get('app_mt_alert_plugin_theme', 'default');
+  }
+
   static public function getCredentials()
   {
     return sfConfig::get('app_mt_alert_plugin_credentials', array());
@@ -43,7 +48,7 @@ class mtAlertConfiguration
     return sfConfig::get('app_mt_alert_plugin_mail_retrieve_mails_method', null);
   }
 
-  static public function getMailOfApplication()
+  static public function getMailForAll()
   {
     return sfConfig::get('app_mt_alert_plugin_mail_retrieve_all_mails_method', null);
   }
@@ -56,32 +61,5 @@ class mtAlertConfiguration
   static public function getMailSubject($alert)
   {
     return str_replace(array('%%title%%'), array($alert->getTitle()), sfConfig::get('app_mt_alert_plugin_mail_subject', '%%title%%'));
-  }
-
-  static public function getHideAlertInSessionAttributeName($user)
-  {
-    return "mt_alert.".$user->getUsername().".hide";
-  }
-
-  static public function getHideAlertInSessionAttribute($user)
-  {
-    return $user->getAttribute(self::getHideAlertInSessionAttributeName($user), array());
-  }
-
-  static public function isHiddenInSession($user, $mt_alert_message)
-  {
-    return in_array($mt_alert_message->getId(), self::getHideAlertInSessionAttribute($user));
-  }
-
-  static public function hideAlertInSession($user, $mt_alert_message)
-  {
-    $user->setAttribute(self::getHideAlertInSessionAttributeName($user),
-                        array_unique(array_merge(self::getHideAlertInSessionAttribute($user), array($mt_alert_message->getId()))));
-  }
-
-  static public function showAlertInSession($user, $mt_alert_message)
-  {
-    $user->setAttribute(self::getHideAlertInSessionAttributeName($user),
-                        array_unique(array_diff(self::getHideAlertInSessionAttribute($user), array($mt_alert_message->getId()))));
   }
 }

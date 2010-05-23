@@ -15,12 +15,14 @@ class mtAlertMessageFormFilter extends BasemtAlertMessageFormFilter
 
     foreach (array('title', 'message', 'condition_description') as $f)
     {
-      $this->getWidget($f)->setOption('empty_label', __('is empty'));
+      $this->getWidget($f)->setOption('empty_label', __('is empty', array(), 'mt_alert_message'));
     }
 
     foreach (array('is_active', 'can_be_hidden_permanently', 'show_to_all', 'can_be_mailed', 'show_in_browser') as $name)
     {
-      $this->getWidget($name)->setOption('choices', array('' => __('yes or no'), 1 => __('yes'), 0 => __('no')));
+      $this->getWidget($name)->setOption('choices', array('' => __('yes or no', array(), 'mt_alert_messages'),
+                                                           1 => __('yes', array(), 'mt_alert_messages'),
+                                                           0 => __('no', array(), 'mt_alert_messages')));
     }
 
 

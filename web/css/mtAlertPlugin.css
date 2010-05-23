@@ -1,57 +1,35 @@
+#mt_alert_messages
+{
+  font-family: arial,helvetica,clean,sans-serif;
+  font-size: 13px;
+  width: 95%;
+  margin: 0 auto;
+}
+
 .mt_alert_message_list_stacked .list_detail
 {
   margin-left: 10px;
 }
 
-.mt_alert_message_list_stacked .day_list ul li
-{
-  list-style-type: none;
-  display: inline;
-}
-
-.mt_alert_message_list_stacked h2
-{
-
-}
-
-ul.sf_admin_td_actions li
-{
-  display: block !important;
-}
-
-#mt_alert_messages
-{
-
-}
-
 #mt_alert_messages #closer
 {
   font-size: 12px;
-  margin-right: 15px;
-  float: right;
-  margin-top: 5px;
   background-color: transparent;
-  margin-right: 15px;
+  position: absolute;
+  right: 5px;
 }
 
 #mt_alert_messages_detail
 {
   position: absolute;
-  width: 100%;
-  background-color: #F9FCFD;
   top: 0;
+  height: 180px;
   padding: 7px 7px;
   border-bottom: 3px solid #DDD;
   border-top: 1px solid #DDD;
-}
-
-#mt_alert_messages_detail .mt_alert_message
-{
-}
-
-#mt_alert_messages_detail .mt_alert_message h3
-{
-
+  background: rgba(255, 255, 255, 0.9);
+  overflow-y: auto;
+  width: 95%;
 }
 
 #mt_alert_messages_detail .mt_alert_message div.content
@@ -72,35 +50,18 @@ ul.sf_admin_td_actions li
   display: inline;
 }
 
-#mt_alert_messages_detail .mt_alert_message div.actions
-{
-}
-
-#mt_alert_messages_detail .mt_alert_message div.message
-{
-}
-
 #mt_alert_messages_notification
 {
+  width: 95%;
   position: absolute;
-  width: 100%;
   background-color: #F9FCFD;
   top: 0;
-  /*
-  filter: alpha(opacity=40);
-  opacity: 0.4;
-  */
   background: rgba(255, 255, 255, 0.9);
   font-size: 16px;
   text-align: center;
   padding: 7px 7px;
   border-bottom: 3px solid #DDD;
   border-top: 1px solid #DDD;
-}
-
-#mt_alert_messages_detail_expander
-{
-
 }
 
 #mt_alert_messages_ajax_area

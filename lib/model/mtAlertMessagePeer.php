@@ -110,7 +110,7 @@ class mtAlertMessagePeer extends BasemtAlertMessagePeer
   }
 
   /**
-   * Returns a criteria that filter mtAlertMessages
+   * Returns a criteria that filters mtAlertMessages
    * according to the current day name.
    *
    * @param $criteria
@@ -127,7 +127,7 @@ class mtAlertMessagePeer extends BasemtAlertMessagePeer
   }
 
   /**
-   * Returns a criteria that filter by
+   * Returns a criteria that filters by
    *  - username
    *  - day
    *  - active-
@@ -139,12 +139,62 @@ class mtAlertMessagePeer extends BasemtAlertMessagePeer
    *
    * @return $criteria
    */
-  static public function doSelectForUser($sf_user, $criteria = null)
+  static public function doSelectForAuthenticatedUser($sf_user, $criteria = null)
   {
     $criteria = self::doSelectCredentialsUsersCriteria($sf_user->listCredentials(),
-                             array($sf_user->getUsername()),
-                             self::doSelectConfigurationCriteria(array($sf_user->getUsername()),
-                                                                 self::doSelectDayCriteria(self::doSelectActiveCriteria(self::doSelectBrowserCriteria()))));
+                             array(mtAlertUserHelper::getUsername($sf_user)),
+                             self::doSelectConfigurationCriteria(array(mtAlertUserHelper::getUsername($sf_user)),
+                                                                 self::doSelectDayCriteria(self::doSelectActiveCriteria(self::doSelectBrowserCriteria($criteria)))));
+    $mtAlerts   = array();
+    $tmpAlerts  = self::doSelect($criteria);
+
+    /* Check for static condition */
+    foreach ($tmpAlerts as $a)
+    {
+      if ($a->checkCondition())
+      {
+        $mtAlerts[] = $a;
+      }
+    }
+
+    return $mtAlerts;
+  }
+
+  /**
+   * Returns the appropiate criteria for retrieving alerts
+   * from database.
+   *
+   * @param $sf_user a sfUser instance
+   * @param $criteria
+   *
+   * @return $criteria
+   */
+  static public function doSelectForUser($sf_user, $criteria = null)
+  {
+    if ($sf_user->isAuthenticated())
+    {
+      return self::doSelectForAuthenticatedUser($sf_user, $criteria);
+    }
+    else
+    {
+      return self::doSelectForNonAuthenticatedUser($sf_user, $criteria);
+    }
+  }
+
+  /**
+   * Returns a criteria that filters by
+   *  - day
+   *  - is_active
+   *  - browser_only
+   *
+   * @param $sf_user a sfUser instance
+   * @param $criteria
+   *
+   * @return $criteria
+   */
+  static public function doSelectForNonAuthenticatedUser($sf_user, $criteria = null)
+  {
+    $criteria   = self::doSelectDayCriteria(self::doSelectActiveCriteria(self::doSelectBrowserCriteria($criteria)));
     $mtAlerts   = array();
     $tmpAlerts  = self::doSelect($criteria);
 

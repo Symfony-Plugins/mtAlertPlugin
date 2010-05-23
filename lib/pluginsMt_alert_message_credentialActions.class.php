@@ -11,6 +11,7 @@ class pluginsMt_alert_message_credentialActions extends  autoMt_alert_message_cr
   public function preExecute()
   {
     parent::preExecute();
+    $this->getContext()->getConfiguration()->loadHelpers(array('I18N'));
 
     $this->mt_alert_message_id = $this->getUser()->getAttribute('mt_alert_message_id');
     $this->mt_alert_message    = mtAlertMessagePeer::retrieveByPk($this->mt_alert_message_id);

@@ -43,14 +43,21 @@ class sendMail extends sfBaseTask
 
     if ($a->checkCondition())
     {
-      $users       = array();
-      foreach ($a->getmtAlertMessageCredentialsRepresentation() as $c)
+      if ($a->getShowToAll())
       {
-        $users = array_merge($users, array());
+        $mails       = call_user_func(mtAlertConfiguration::getMailForAll());
       }
-      $users       = array_unique(array_merge($users, $a->getmtAlertMessageUsersRepresentation()));
-      $usersNot    = array_diff($users, mtAlertMessageUserConfigurationPeer::getDisabledUsers($a));
-      $mails       = call_user_func($mailClassMethod, $users);
+      else
+      {
+        $users       = array();
+        foreach ($a->getmtAlertMessageCredentialsRepresentation() as $c)
+        {
+          $users = array_merge($users, array());
+        }
+        $users       = array_unique(array_merge($users, $a->getmtAlertMessageUsersRepresentation()));
+        $usersNot    = array_diff($users, mtAlertMessageUserConfigurationPeer::getDisabledUsers($a));
+        $mails       = call_user_func($mailClassMethod, $users);
+      }
     }
 
     $res = array();

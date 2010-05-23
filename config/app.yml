@@ -3,6 +3,7 @@
 #    credentials: []
 #    app_mt_alert_plugin_enable_rich_text: false
 #    app_mt_alert_plugin_tiny_mce_theme: simple
+#    theme: 'default'
 #    mail_subject: "App name | %%title%%"
 #    mail_from:    "myMail@myServer.com"
 #    mail_retrieve_mails_method: ['Class', 'StaticMethod']                   #This method should retrieve the email address of an array of usernames passed as parameter.
