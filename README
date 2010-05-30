@@ -74,8 +74,8 @@
 {{{
       mt_alert_plugin:
         credentials:                                  [admin, center_admin, unit_admin, unit]
-        app_mt_alert_plugin_enable_rich_text:         false
-        app_mt_alert_plugin_tiny_mce_theme:           simple
+        enable_rich_text:                             false
+        tiny_mce_theme:                               simple
         theme:                                        default
         mail_subject:                                 "App Name | %%title%%"
         mail_from:                                    "address@server.com"

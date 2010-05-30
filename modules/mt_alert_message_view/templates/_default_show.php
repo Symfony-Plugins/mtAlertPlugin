@@ -1,4 +1,4 @@
-<?php use_stylesheet('/mtAlertPlugin/css/mtAlertPlugin.css', 'first') ?>
+<?php use_stylesheet('/mtAlertPlugin/css/default.css', 'first') ?>
 <?php use_helper('I18N', 'Javascript') ?>
 
 <div id="mt_alert_messages">

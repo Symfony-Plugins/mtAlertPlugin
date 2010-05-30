@@ -1,5 +1,5 @@
 <td>
-  <ul class="sf_admin_td_actions">
+  <ul class="sf_admin_td_actions mt_alert_message_list_td_actions">
     <?php echo $helper->linkToEdit($mt_alert_message, array(  'label' => __('Edit alert', array(), 'mt_alert_messages'),  'params' =>   array(  ),  'class_suffix' => 'edit',)) ?>
     <?php if (!$mt_alert_message->getIsActive()): ?>
     <li class="sf_admin_action_activate">

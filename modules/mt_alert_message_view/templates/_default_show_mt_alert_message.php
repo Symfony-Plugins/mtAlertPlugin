@@ -6,8 +6,8 @@
 <div class="mt_alert_message" id="<?php echo $mtaId ?>">
   <h3>
     <?php echo $mta->getTitle() ?>
-    <?php echo link_to_function(__('Show'), "Effect.BlindDown('$mtaDetailId', { duration: 0.4 }); $(this).fade(); Effect.Appear('$mtaHLinkId', { delay: 1.1 });", array('id' => $mtaSLinkId)) ?>
-    <?php echo link_to_function(__('Hide'), "Effect.BlindUp('$mtaDetailId', { duration: 0.4 }); $(this).fade(); Effect.Appear('$mtaSLinkId', { delay: 1.1 });", array('id' => $mtaHLinkId, 'style' => 'display: none')) ?>
+    <?php echo link_to_function(__('Show'), "jQuery('#$mtaDetailId').slideDown(1000); jQuery(this).fadeOut(400); setTimeout(function() {jQuery('#$mtaHLinkId').fadeIn()}, 450);", array('id' => $mtaSLinkId)) ?>
+    <?php echo link_to_function(__('Hide'), "jQuery('#$mtaDetailId').slideUp(1000); jQuery(this).fadeOut(400); setTimeout(function() {jQuery('#$mtaSLinkId').fadeIn()}, 450);", array('id' => $mtaHLinkId, 'style' => 'display: none')) ?>
   </h3>
   <div class="content" style="display: none" id="<?php echo $mtaDetailId ?>">
     <div class="actions">

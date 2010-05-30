@@ -361,8 +361,20 @@
         <target>Alerta</target>
       </trans-unit>
       <trans-unit>
-        <source></source>
-        <target></target>
+        <source>Credentials</source>
+        <target>Credenciales</target>
+      </trans-unit>
+      <trans-unit>
+        <source>You must asociate at least one user or one credential to this alert.</source>
+        <target>Debes asociarle al menos un usuario o una credencial a esta alerta.</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Will be shown to users with the following credentials</source>
+        <target>Será mostrada a usuarios con las siguientes credenciales</target>
+      </trans-unit>
+      <trans-unit>
+        <source>Will be shown to the following users</source>
+        <target>Será mostrada a los siguientes usuarios</target>
       </trans-unit>
     </body>
   </file>

@@ -1,90 +1,17 @@
-#mt_alert_messages
+.show_to_warning
 {
-  font-family: arial,helvetica,clean,sans-serif;
-  font-size: 13px;
-  width: 95%;
-  margin: 0 auto;
+  font-weight: bold;
+  color: #CB071C;
+}
+
+.mt_alert_message_list_td_actions li
+{
+  display: block !important;
 }
 
 .mt_alert_message_list_stacked .list_detail
 {
   margin-left: 10px;
-}
-
-#mt_alert_messages #closer
-{
-  font-size: 12px;
-  background-color: transparent;
-  position: absolute;
-  right: 5px;
-}
-
-#mt_alert_messages_detail
-{
-  position: absolute;
-  top: 0;
-  height: 180px;
-  padding: 7px 7px;
-  border-bottom: 3px solid #DDD;
-  border-top: 1px solid #DDD;
-  background: rgba(255, 255, 255, 0.9);
-  overflow-y: auto;
-  width: 95%;
-}
-
-#mt_alert_messages_detail .mt_alert_message div.content
-{
-  margin-left: 25px;
-}
-
-
-#mt_alert_messages_detail .mt_alert_message div.actions ul
-{
-  margin-left: 0px;
-}
-
-#mt_alert_messages_detail .mt_alert_message div.actions li
-{
-  list-style-type: none;
-  margin-right: 3px;
-  display: inline;
-}
-
-#mt_alert_messages_notification
-{
-  width: 95%;
-  position: absolute;
-  background-color: #F9FCFD;
-  top: 0;
-  background: rgba(255, 255, 255, 0.9);
-  font-size: 16px;
-  text-align: center;
-  padding: 7px 7px;
-  border-bottom: 3px solid #DDD;
-  border-top: 1px solid #DDD;
-}
-
-#mt_alert_messages_ajax_area
-{
-  text-align: center;
-  font-size: 14px;
-}
-
-#mt_alert_messages_ajax_area .error
-{
-  padding: 3px 0px;
-  background-color: #FF3333;
-  color: #FFF;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-}
-
-#mt_alert_messages_ajax_area .notice
-{
-  padding: 3px 0px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  background-color: #FFFFCC;
 }
 
 #sf_admin_container ul li.sf_admin_action_activate a
