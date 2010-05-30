@@ -2,6 +2,18 @@
 
 class mtAlertMessagePeer extends BasemtAlertMessagePeer
 {
+  static public function doSelectPks($criteria = null)
+  {
+    $criteria = is_null($criteria)? new Criteria() : $criteria;
+
+    $criteria->clearSelectColumns();
+    $criteria->addSelectColumn(self::ID);
+
+    $stmt = self::doSelectStmt($criteria);
+
+    return $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+  }
+
   /**
    * Returns a criteria that will only selected
    * those alerts that are active.
@@ -95,17 +107,24 @@ class mtAlertMessagePeer extends BasemtAlertMessagePeer
    */
   static public function doSelectConfigurationCriteria($usernames, $criteria = null)
   {
-    $criteria = is_null($criteria)? new Criteria() : $criteria;
-    $criteria->addJoin(mtAlertMessagePeer::ID, mtAlertMessageUserConfigurationPeer::MT_ALERT_MESSAGE_ID, Criteria::LEFT_JOIN);
+    $pks = mtAlertMessageUserConfigurationPeer::doSelectPksByUsernames($usernames);
 
-    $criterion1 = $criteria->getNewCriterion(mtAlertMessageUserConfigurationPeer::ID, null, Criteria::ISNULL);
-    $criterion2 = $criteria->getNewCriterion(mtAlertMessageUserConfigurationPeer::HIDE_PERMANENTLY, false);
-    $criterion3 = $criteria->getNewCriterion(mtAlertMessageUserConfigurationPeer::USERNAME, $usernames, Criteria::IN);
+    if (!empty($pks))
+    {
+      $criteria = is_null($criteria)? new Criteria() : $criteria;
+      $criteria = new Criteria();
+      $criteria->addJoin(mtAlertMessagePeer::ID, mtAlertMessageUserConfigurationPeer::MT_ALERT_MESSAGE_ID, Criteria::LEFT_JOIN);
 
-    $criterion2->addAnd($criterion3);
-    $criterion1->addOr($criterion2);
-    $criteria->addAnd($criterion1);
+      $criterion1 = $criteria->getNewCriterion(mtAlertMessageUserConfigurationPeer::ID, null, Criteria::ISNULL);
+      $criterion2 = $criteria->getNewCriterion(mtAlertMessageUserConfigurationPeer::HIDE_PERMANENTLY, false);
+      $criterion3 = $criteria->getNewCriterion(mtAlertMessageUserConfigurationPeer::USERNAME, $usernames, Criteria::IN);
+      $criterion4 = $criteria->getNewCriterion(mtAlertMessageUserConfigurationPeer::ID, $pks, Criteria::IN);
 
+      $criterion2->addAnd($criterion3);
+      $criterion2->addAnd($criterion4);
+      $criterion1->addOr($criterion2);
+      $criteria->addAnd($criterion1);
+    }
     return $criteria;
   }
 

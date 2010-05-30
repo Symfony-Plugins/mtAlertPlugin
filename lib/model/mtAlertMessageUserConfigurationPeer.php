@@ -2,6 +2,19 @@
 
 class mtAlertMessageUserConfigurationPeer extends BasemtAlertMessageUserConfigurationPeer
 {
+  static public function doSelectPks($criteria = null)
+  {
+    $criteria = is_null($criteria)? new Criteria() : $criteria;
+
+    $criteria->clearSelectColumns();
+    $criteria->addSelectColumn(self::ID);
+
+    $stmt = self::doSelectStmt($criteria);
+
+    return $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+  }
+
+
   /**
    * Returns the usernames that disabled the notification
    * permanently
@@ -23,5 +36,13 @@ class mtAlertMessageUserConfigurationPeer extends BasemtAlertMessageUserConfigur
     }
 
     return $usernames;
+  }
+
+  static public function doSelectPksByUsernames($usernames)
+  {
+    $c = new Criteria();
+    $c->add(mtAlertMessageUserConfigurationPeer::USERNAME, $usernames, Criteria::IN);
+
+    return self::doSelectPks($c);
   }
 }
