@@ -1,4 +1,4 @@
-<?php use_helper('Javascript', 'I18N') ?>
+<?php use_helper('JavascriptBase', 'I18N') ?>
 <div id="alert" class="notice"><?php echo __($text, array(), 'mt_alert_messages') ?></div>
 
 <?php javascript_tag() ?>

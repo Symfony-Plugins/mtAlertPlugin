@@ -1,5 +1,5 @@
 <?php use_stylesheet('/mtAlertPlugin/css/default.css', 'first') ?>
-<?php use_helper('I18N', 'Javascript') ?>
+<?php use_helper('I18N', 'JavascriptBase') ?>
 
 <div id="mt_alert_messages">
   <div id="mt_alert_messages_detail" style="display: none">
