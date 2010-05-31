@@ -10,12 +10,12 @@
     <email>torresmat@gmail.com</email>
     <active>yes</active>
   </lead>
-  <packager>
+  <lead>
     <name>José Nahuel CUESTA LUENGO</name>
     <user>ncuesta</user>
     <email>ncuesta@cespi.unlp.edu.ar</email>
     <active>yes</active>
-  </packager>
+  </lead>
   <date>[automatic]</date>
   <version>
     <release>[automatic]</release>
