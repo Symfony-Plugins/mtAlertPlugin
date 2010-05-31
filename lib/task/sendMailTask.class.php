@@ -71,7 +71,7 @@ class sendMail extends sfBaseTask
       }
     }
 
-    return $mails;
+    return $res;
   }
 
   /**

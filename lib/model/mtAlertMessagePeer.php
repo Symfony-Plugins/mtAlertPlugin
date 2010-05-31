@@ -112,7 +112,6 @@ class mtAlertMessagePeer extends BasemtAlertMessagePeer
     if (!empty($pks))
     {
       $criteria = is_null($criteria)? new Criteria() : $criteria;
-      $criteria = new Criteria();
       $criteria->addJoin(mtAlertMessagePeer::ID, mtAlertMessageUserConfigurationPeer::MT_ALERT_MESSAGE_ID, Criteria::LEFT_JOIN);
 
       $criterion1 = $criteria->getNewCriterion(mtAlertMessageUserConfigurationPeer::ID, null, Criteria::ISNULL);
