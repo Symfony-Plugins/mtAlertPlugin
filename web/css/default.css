@@ -2,7 +2,7 @@
 {
   font-family: arial,helvetica,clean,sans-serif;
   font-size: 13px;
-  width: 95%;
+  width: 60%;
   margin: 0 auto;
 }
 
@@ -24,7 +24,7 @@
   border-top: 1px solid #DDD;
   background: rgba(255, 255, 255, 0.9);
   overflow-y: auto;
-  width: 95%;
+  width: 60%;
 }
 
 .mt_alert_message div.actions ul
@@ -53,7 +53,7 @@
 
 #mt_alert_messages_notification
 {
-  width: 95%;
+  width: 60%;
   position: absolute;
   background-color: #F9FCFD;
   top: 0;
