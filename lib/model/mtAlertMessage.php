@@ -101,7 +101,7 @@ class mtAlertMessage extends BasemtAlertMessage
   {
     $conf = mtAlertMessageUserConfigurationPeer::retrieveConfigurationFor($this, $username);
 
-    return is_null($conf) || !$conf->getHidePermanently();
+    return !$this->getCanBeHiddenPermanently() || is_null($conf) || !$conf->getHidePermanently();
   }
 
   /**

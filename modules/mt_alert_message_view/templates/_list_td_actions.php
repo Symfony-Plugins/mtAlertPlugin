@@ -1,6 +1,7 @@
 <td>
   <ul class="sf_admin_td_actions">
     <?php if (mtAlertUserHelper::canHideAlertsPermanently($sf_user)
+              && $mt_alert_message->getCanBeHiddenPermanently()
               && !$mt_alert_message->getConfiguration($sf_user)->getHidePermanently()
               && !mtAlertUserHelper::isHiddenInSession($sf_user instanceOf sfOutputEscaper? $sf_user->getRawValue() : $sf_user, $mt_alert_message)): ?>
       <li class="sf_admin_action_nevershowagain">
@@ -8,7 +9,7 @@
       </li>
     <?php endif ?>
 
-    <?php if (mtAlertUserHelper::canHideAlertsPermanently($sf_user)
+    <?php if (mtAlertUserHelper::canHideAlertsPermanently($sf_user) && $mt_alert_message->getCanBeHiddenPermanently()
               && $mt_alert_message->getConfiguration($sf_user instanceOf sfOutputEscaper? $sf_user->getRawValue() : $sf_user)->getHidePermanently()): ?>
       <li class="sf_admin_action_showagain">
         <?php echo link_to(__('Enable', array(), 'mt_alert_messages'), 'mt_alert_message_view/doShowAgain?id='.$mt_alert_message->getId(), array()) ?>
