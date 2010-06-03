@@ -45,4 +45,13 @@ class mtAlertMessageUserConfigurationPeer extends BasemtAlertMessageUserConfigur
 
     return self::doSelectPks($c);
   }
+
+  static public function retrieveConfigurationFor($mt_alert_message, $username)
+  {
+    $c = new Criteria();
+    $c->add(mtAlertMessageUserConfigurationPeer::USERNAME, $username);
+    $c->add(mtAlertMessageuserConfigurationPeer::MT_ALERT_MESSAGE_ID, $mt_alert_message->getId());
+
+    return self::doSelectOne($c);
+  }
 }

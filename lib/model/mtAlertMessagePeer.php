@@ -94,40 +94,6 @@ class mtAlertMessagePeer extends BasemtAlertMessagePeer
   }
 
   /**
-   * Returns a criteria that is filtered by the configuration
-   * that a certain user has setup for the alerts.
-   *
-   * A certain user can hide those alerts that are botter him
-   * for example.
-   *
-   * @param $usernames filter by the configuration of this users
-   * @param $criteria
-   *
-   * @return a Criteria instance
-   */
-  static public function doSelectConfigurationCriteria($usernames, $criteria = null)
-  {
-    $pks = mtAlertMessageUserConfigurationPeer::doSelectPksByUsernames($usernames);
-
-    if (!empty($pks))
-    {
-      $criteria = is_null($criteria)? new Criteria() : $criteria;
-      $criteria->addJoin(mtAlertMessagePeer::ID, mtAlertMessageUserConfigurationPeer::MT_ALERT_MESSAGE_ID, Criteria::LEFT_JOIN);
-
-      $criterion1 = $criteria->getNewCriterion(mtAlertMessageUserConfigurationPeer::ID, null, Criteria::ISNULL);
-      $criterion2 = $criteria->getNewCriterion(mtAlertMessageUserConfigurationPeer::HIDE_PERMANENTLY, false);
-      $criterion3 = $criteria->getNewCriterion(mtAlertMessageUserConfigurationPeer::USERNAME, $usernames, Criteria::IN);
-      $criterion4 = $criteria->getNewCriterion(mtAlertMessageUserConfigurationPeer::ID, $pks, Criteria::IN);
-
-      $criterion2->addAnd($criterion3);
-      $criterion2->addAnd($criterion4);
-      $criterion1->addOr($criterion2);
-      $criteria->addAnd($criterion1);
-    }
-    return $criteria;
-  }
-
-  /**
    * Returns a criteria that filters mtAlertMessages
    * according to the current day name.
    *
@@ -161,15 +127,14 @@ class mtAlertMessagePeer extends BasemtAlertMessagePeer
   {
     $criteria = self::doSelectCredentialsUsersCriteria($sf_user->listCredentials(),
                              array(mtAlertUserHelper::getUsername($sf_user)),
-                             self::doSelectConfigurationCriteria(array(mtAlertUserHelper::getUsername($sf_user)),
-                                                                 self::doSelectDayCriteria(self::doSelectActiveCriteria(self::doSelectBrowserCriteria($criteria)))));
+                             self::doSelectDayCriteria(self::doSelectActiveCriteria(self::doSelectBrowserCriteria($criteria))));
     $mtAlerts   = array();
     $tmpAlerts  = self::doSelect($criteria);
 
     /* Check for static condition */
     foreach ($tmpAlerts as $a)
     {
-      if ($a->checkCondition())
+      if ($a->checkCondition() && $a->checkConfiguration(mtAlertUserHelper::getUsername($sf_user)))
       {
         $mtAlerts[] = $a;
       }

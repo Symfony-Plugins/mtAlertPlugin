@@ -97,6 +97,13 @@ class mtAlertMessage extends BasemtAlertMessage
     }
   }
 
+  public function checkConfiguration($username)
+  {
+    $conf = mtAlertMessageUserConfigurationPeer::retrieveConfigurationFor($this, $username);
+
+    return is_null($conf) || !$conf->getHidePermanently();
+  }
+
   /**
    * Obtains an already save configuration for the
    * user passed by parameter or returns a non saved
@@ -138,11 +145,7 @@ class mtAlertMessage extends BasemtAlertMessage
    */
   protected function retrieveConfiguration($sf_user)
   {
-    $criteria = new Criteria();
-    $criteria->add(mtAlertMessageUserConfigurationPeer::USERNAME, mtAlertUserHelper::getUsername($sf_user));
-    $criteria->add(mtAlertMessageUserConfigurationPeer::MT_ALERT_MESSAGE_ID, $this->getId());
-
-    return mtAlertMessageUserConfigurationPeer::doSelectOne($criteria);
+    return mtAlertMessageUserConfigurationPeer::retrieveConfigurationFor($this, mtAlertUserHelper::getUsername($sf_user));
   }
 
   /**
