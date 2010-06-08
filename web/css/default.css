@@ -2,8 +2,10 @@
 {
   font-family: arial,helvetica,clean,sans-serif;
   font-size: 13px;
-  width: 60%;
-  margin: 0 auto;
+  width: 70% !important;
+  width: 140%;
+  margin: 0 auto !important;
+  margin: 0 20% 0 20%;
 }
 
 #mt_alert_messages #closer
@@ -22,9 +24,12 @@
   padding: 7px 7px;
   border-bottom: 3px solid #DDD;
   border-top: 1px solid #DDD;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9) !important;
+  background: white;
+  filter: alpha(opacity=90)
   overflow-y: auto;
-  width: 60%;
+  overflow-x: auto;
+  width: 70%;
 }
 
 .mt_alert_message div.actions ul
@@ -53,11 +58,13 @@
 
 #mt_alert_messages_notification
 {
-  width: 60%;
+  width: 70%;
   position: absolute;
   background-color: #F9FCFD;
   top: 0;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9) !important;
+  background: white;
+  filter:alpha(opacity=90)
   font-size: 16px;
   text-align: center;
   padding: 7px 7px;
