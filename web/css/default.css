@@ -70,6 +70,7 @@
   padding: 7px 7px;
   border-bottom: 3px solid #DDD;
   border-top: 1px solid #DDD;
+  font-size: 14px;
 }
 
 #mt_alert_messages_ajax_area
@@ -93,4 +94,9 @@
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   background-color: #FFFFCC;
+}
+
+#mt_alert_messages h3
+{
+  font-size: 14px;
 }
