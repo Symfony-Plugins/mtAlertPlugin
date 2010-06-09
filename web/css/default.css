@@ -1,6 +1,6 @@
 #mt_alert_messages
 {
-  font-family: arial,helvetica,clean,sans-serif;
+  font-family: Trebuchet MS,arial,helvetica,clean,sans-serif;
   font-size: 13px;
   width: 70% !important;
   width: 140%;
@@ -12,8 +12,34 @@
 {
   font-size: 12px;
   background-color: transparent;
-  position: absolute;
-  right: 5px;
+  float: right;
+  color: #d33;
+  background: url('../images/cross-small.png') no-repeat right center transparent;
+  padding: 3px 18px 3px 3px;
+}
+
+#mt_alert_messages #closer:hover
+{
+  background-color: #d33;
+  color: #fff;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  text-decoration: none;
+}
+
+#mt_alert_expander
+{
+  color: #00a8e6;
+  padding: 3px 4px;
+}
+
+#mt_alert_messages #mt_alert_expander:hover
+{
+  background-color: #00a8e6;
+  color: #fff;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  text-decoration: none;
 }
 
 #mt_alert_messages_detail
@@ -30,12 +56,16 @@
   overflow-y: auto;
   overflow-x: auto;
   width: 70%;
+  -webkit-border-radius-bottomleft: 8px;
+  -webkit-border-radius-bottomright: 8px;
+  -moz-border-radius-bottomleft: 8px;
+  -moz-border-radius-bottomright: 8px;
 }
 
 .mt_alert_message div.actions ul
 {
-  margin-left: 0px;
-  padding-left: 0px;
+  margin: 3px;
+  padding: 3px;
 }
 
 #mt_alert_messages_detail .mt_alert_message div.content
@@ -56,6 +86,55 @@
   display: inline;
 }
 
+.mt_alert_message
+{
+  border-top: 1px solid #ccc;
+}
+
+.mt_alert_message .message
+{
+  border: 1px solid #ccc;
+  background-color: #eee;
+  padding: 3px;
+  margin: 2px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+.mt_alert_message a
+{
+  color: #00a8e6;
+  background: url('../images/arrow-180.png') no-repeat left center transparent;
+  padding: 3px 3px 3px 20px;
+}
+
+.mt_alert_message a:hover
+{
+  background-color: #00a8e6;
+  color: #fff;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  text-decoration: none;
+}
+
+.mt_alert_message .mta_message_hide_link,
+.mt_alert_message .hide_for_this_session a
+{
+  color: #d33;
+  background: url('../images/cross-small.png') no-repeat left center transparent;
+  padding: 3px 3px 3px 20px;
+}
+
+.mt_alert_message .mta_message_hide_link:hover,
+.mt_alert_message .hide_for_this_session a:hover
+{
+  background-color: #d33;
+  color: #fff;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  text-decoration: none;
+}
+
 #mt_alert_messages_notification
 {
   width: 70%;
@@ -71,6 +150,10 @@
   border-bottom: 3px solid #DDD;
   border-top: 1px solid #DDD;
   font-size: 14px;
+  -webkit-border-radius-bottomleft: 8px;
+  -webkit-border-radius-bottomright: 8px;
+  -moz-border-radius-bottomleft: 8px;
+  -moz-border-radius-bottomright: 8px;
 }
 
 #mt_alert_messages_ajax_area
