@@ -105,5 +105,21 @@
   - The fetched emails are now validated before sending an email.
 </notes>
     </release>
+    <release>
+      <version>
+        <release>1.0.3</release>
+        <api>1.0.3</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <license uri="http://www.symfony-project.com/license">MIT</license>
+      <date>2010-06-15</date>
+<notes>
+  - Some alerts were not beign fetched when another user had a configuration for the same alert.
+  - Default theme updated.
+</notes>
+    </release>
   </changelog>
 </package>
