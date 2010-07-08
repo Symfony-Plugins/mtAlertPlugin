@@ -45,7 +45,7 @@ class mtAlertConfiguration
 
   static public function getMailRetrieveUserNamesByCredentialMethod()
   {
-    return sfConfig::get('app_mt_alert_plugin_mail_retrieve_mails_method', null);
+    return sfConfig::get('app_mt_alert_plugin_mail_retrieve_usernames_by_credential_method', null);
   }
 
   static public function getMailForAll()

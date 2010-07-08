@@ -49,14 +49,18 @@ class sendMail extends sfBaseTask
       }
       else
       {
-        $users       = array();
+        $users = array();
+
         foreach ($a->getmtAlertMessageCredentialsRepresentation() as $c)
         {
-          $users = array_merge($users, array());
+          $u = call_user_func($credClassMethod, $c);
+
+          $users = array_merge($users, $u === null ? array() : $u);
         }
-        $users       = array_unique(array_merge($users, $a->getmtAlertMessageUsersRepresentation()));
-        $usersNot    = array_diff($users, mtAlertMessageUserConfigurationPeer::getDisabledUsers($a));
-        $mails       = call_user_func($mailClassMethod, $users);
+
+        $users    = array_unique(array_merge($users, $a->getmtAlertMessageUsersRepresentation()));
+        $usersNot = array_diff($users, mtAlertMessageUserConfigurationPeer::getDisabledUsers($a));
+        $mails    = call_user_func($mailClassMethod, $users);
       }
     }
 
@@ -125,7 +129,10 @@ class sendMail extends sfBaseTask
       $mailBody    = $a->getMailBody();
       $mailFrom    = mtAlertConfiguration::getMailFrom();
 
-      $this->sendAlertMail($mailFrom, $mailCcos, $mailSubject, $mailBody);
+      if (count($mailCcos) > 0)
+      {
+        $this->sendAlertMail($mailFrom, $mailCcos, $mailSubject, $mailBody);
+      }
     }
   }
 }
